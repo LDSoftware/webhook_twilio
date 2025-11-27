@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Order, OrderStatus } from './interfaces/order.interface';
-import * as ordersData from './data/orders.json';
+import ordersData from './data/orders.json';
 
 @Injectable()
 export class OrdersService {
