@@ -25,11 +25,11 @@ let OrdersController = OrdersController_1 = class OrdersController {
         this.twilioMessagingService = twilioMessagingService;
         this.logger = new common_1.Logger(OrdersController_1.name);
     }
-    getOrder(orderId) {
-        return this.ordersService.getOrderById(orderId);
+    async getOrder(orderId) {
+        return await this.ordersService.getOrderById(orderId);
     }
-    getAllOrders() {
-        return this.ordersService.getAllOrders();
+    async getAllOrders() {
+        return await this.ordersService.getAllOrders();
     }
     async receiveWebhook(body) {
         this.logger.log('=== Webhook de Twilio Recibido ===');
@@ -68,7 +68,7 @@ let OrdersController = OrdersController_1 = class OrdersController {
         }
         this.logger.log(`Buscando orden con ID: ${orderId}`);
         try {
-            const order = this.ordersService.getOrderById(orderId);
+            const order = await this.ordersService.getOrderById(orderId);
             this.logger.log('Orden encontrada:', JSON.stringify(order, null, 2));
             const itemsList = order.items
                 .map((item, idx) => `${idx + 1}. ${item.productName} x${item.quantity} - $${item.subtotal}`)
@@ -99,13 +99,13 @@ __decorate([
     __param(0, (0, common_1.Param)('orderId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Object)
+    __metadata("design:returntype", Promise)
 ], OrdersController.prototype, "getOrder", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Array)
+    __metadata("design:returntype", Promise)
 ], OrdersController.prototype, "getAllOrders", null);
 __decorate([
     (0, common_1.Post)('webhook'),

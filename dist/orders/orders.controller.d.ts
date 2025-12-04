@@ -8,7 +8,7 @@ export declare class OrdersController {
     private readonly twilioMessagingService;
     private readonly logger;
     constructor(ordersService: OrdersService, twilioMediaService: TwilioMediaService, twilioMessagingService: TwilioMessagingService);
-    getOrder(orderId: string): Order;
-    getAllOrders(): Order[];
+    getOrder(orderId: string): Promise<Order>;
+    getAllOrders(): Promise<Order[]>;
     receiveWebhook(body: any): Promise<void>;
 }

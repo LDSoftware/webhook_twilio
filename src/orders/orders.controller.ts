@@ -15,13 +15,13 @@ export class OrdersController {
   ) {}
 
   @Get(':orderId')
-  getOrder(@Param('orderId') orderId: string): Order {
-    return this.ordersService.getOrderById(orderId);
+  async getOrder(@Param('orderId') orderId: string): Promise<Order> {
+    return await this.ordersService.getOrderById(orderId);
   }
 
   @Get()
-  getAllOrders(): Order[] {
-    return this.ordersService.getAllOrders();
+  async getAllOrders(): Promise<Order[]> {
+    return await this.ordersService.getAllOrders();
   }
 
   @Post('webhook')
@@ -86,8 +86,8 @@ export class OrdersController {
     this.logger.log(`Buscando orden con ID: ${orderId}`);
     
     try {
-      // Buscar la orden en el JSON
-      const order = this.ordersService.getOrderById(orderId);
+      // Buscar la orden
+      const order = await this.ordersService.getOrderById(orderId);
       
       this.logger.log('Orden encontrada:', JSON.stringify(order, null, 2));
       

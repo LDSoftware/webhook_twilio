@@ -9,6 +9,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "seed": "ts-node src/scripts/seed.ts",
     "test": "echo \"No tests specified\""
   },
   "keywords": [],
@@ -24,8 +25,10 @@
     "@nestjs/common": "^11.1.9",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.9",
+    "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.1.9",
     "axios": "^1.13.2",
+    "mongoose": "^8.20.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "twilio": "^5.10.6"
